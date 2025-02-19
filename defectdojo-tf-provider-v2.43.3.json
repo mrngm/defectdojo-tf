@@ -1,0 +1,847 @@
+{
+	"datasources": [
+		{
+			"name": "endpoints",
+			"schema": {
+				"attributes": [
+					{
+						"name": "id",
+						"int64": {
+							"computed_optional_required": "required",
+							"description": "A unique integer value identifying this endpoint."
+						}
+					},
+					{
+						"name": "endpoint_params",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "findings",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "fragment",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "The fragment identifier which follows the hash mark. The hash mark should be omitted. For example 'section-13', 'paragraph-2'."
+						}
+					},
+					{
+						"name": "host",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "The host name or IP address. It must not include the port number. For example '127.0.0.1', 'localhost', 'yourdomain.com'."
+						}
+					},
+					{
+						"name": "path",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "The location of the resource, it must not start with a '/'. For example endpoint/420/edit"
+						}
+					},
+					{
+						"name": "port",
+						"int64": {
+							"computed_optional_required": "computed",
+							"description": "The network port associated with the endpoint."
+						}
+					},
+					{
+						"name": "product",
+						"int64": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "protocol",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "The communication protocol/scheme such as 'http', 'ftp', 'dns', etc."
+						}
+					},
+					{
+						"name": "query",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "The query string, the question mark should be omitted.For example 'group=4\u0026team=8'"
+						}
+					},
+					{
+						"name": "tags",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"string": {}
+							}
+						}
+					},
+					{
+						"name": "userinfo",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "User info as 'alice', 'bob', etc."
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "products",
+			"schema": {
+				"attributes": [
+					{
+						"name": "id",
+						"int64": {
+							"computed_optional_required": "required",
+							"description": "A unique integer value identifying this product."
+						}
+					},
+					{
+						"name": "authorization_groups",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "business_criticality",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "* `very high` - Very High\n* `high` - High\n* `medium` - Medium\n* `low` - Low\n* `very low` - Very Low\n* `none` - None"
+						}
+					},
+					{
+						"name": "created",
+						"string": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "description",
+						"string": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "disable_sla_breach_notifications",
+						"bool": {
+							"computed_optional_required": "computed",
+							"description": "Disable SLA breach notifications if configured in the global settings"
+						}
+					},
+					{
+						"name": "enable_full_risk_acceptance",
+						"bool": {
+							"computed_optional_required": "computed",
+							"description": "Allows full risk acceptance using a risk acceptance form, expiration date, uploaded proof, etc."
+						}
+					},
+					{
+						"name": "enable_product_tag_inheritance",
+						"bool": {
+							"computed_optional_required": "computed",
+							"description": "Enables product tag inheritance. Any tags added on a product will automatically be added to all Engagements, Tests, and Findings"
+						}
+					},
+					{
+						"name": "enable_simple_risk_acceptance",
+						"bool": {
+							"computed_optional_required": "computed",
+							"description": "Allows simple risk acceptance by checking/unchecking a checkbox."
+						}
+					},
+					{
+						"name": "external_audience",
+						"bool": {
+							"computed_optional_required": "computed",
+							"description": "Specify if the application is used by people outside the organization."
+						}
+					},
+					{
+						"name": "findings_count",
+						"int64": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "findings_list",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "internet_accessible",
+						"bool": {
+							"computed_optional_required": "computed",
+							"description": "Specify if the application is accessible from the public internet."
+						}
+					},
+					{
+						"name": "lifecycle",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "* `construction` - Construction\n* `production` - Production\n* `retirement` - Retirement"
+						}
+					},
+					{
+						"name": "members",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "name",
+						"string": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "origin",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "* `third party library` - Third Party Library\n* `purchased` - Purchased\n* `contractor` - Contractor Developed\n* `internal` - Internally Developed\n* `open source` - Open Source\n* `outsourced` - Outsourced"
+						}
+					},
+					{
+						"name": "platform",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "* `web service` - API\n* `desktop` - Desktop\n* `iot` - Internet of Things\n* `mobile` - Mobile\n* `web` - Web"
+						}
+					},
+					{
+						"name": "prod_numeric_grade",
+						"int64": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "prod_type",
+						"int64": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "product_manager",
+						"int64": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "product_meta",
+						"list_nested": {
+							"computed_optional_required": "computed",
+							"nested_object": {
+								"attributes": [
+									{
+										"name": "name",
+										"string": {
+											"computed_optional_required": "computed"
+										}
+									},
+									{
+										"name": "value",
+										"string": {
+											"computed_optional_required": "computed"
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"name": "regulations",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "revenue",
+						"string": {
+							"computed_optional_required": "computed",
+							"description": "Estimate the application's revenue."
+						}
+					},
+					{
+						"name": "sla_configuration",
+						"int64": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "tags",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"string": {}
+							}
+						}
+					},
+					{
+						"name": "team_manager",
+						"int64": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "technical_contact",
+						"int64": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "user_records",
+						"int64": {
+							"computed_optional_required": "computed",
+							"description": "Estimate the number of user records within the application."
+						}
+					}
+				]
+			}
+		}
+	],
+	"provider": {
+		"name": "defectdojo"
+	},
+	"resources": [
+		{
+			"name": "endpoints",
+			"schema": {
+				"attributes": [
+					{
+						"name": "fragment",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "The fragment identifier which follows the hash mark. The hash mark should be omitted. For example 'section-13', 'paragraph-2'.",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.LengthAtMost(500)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "host",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "The host name or IP address. It must not include the port number. For example '127.0.0.1', 'localhost', 'yourdomain.com'.",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.LengthAtMost(500)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "path",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "The location of the resource, it must not start with a '/'. For example endpoint/420/edit",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.LengthAtMost(500)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "port",
+						"int64": {
+							"computed_optional_required": "computed_optional",
+							"description": "The network port associated with the endpoint.",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+											}
+										],
+										"schema_definition": "int64validator.Between(-2147483648, 2147483647)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "product",
+						"int64": {
+							"computed_optional_required": "computed_optional"
+						}
+					},
+					{
+						"name": "protocol",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "The communication protocol/scheme such as 'http', 'ftp', 'dns', etc.",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.LengthAtMost(20)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "query",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "The query string, the question mark should be omitted.For example 'group=4\u0026team=8'",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.LengthAtMost(1000)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "tags",
+						"list": {
+							"computed_optional_required": "computed_optional",
+							"element_type": {
+								"string": {}
+							}
+						}
+					},
+					{
+						"name": "userinfo",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "User info as 'alice', 'bob', etc.",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.LengthAtMost(500)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "endpoint_params",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "findings",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "id",
+						"int64": {
+							"computed_optional_required": "computed",
+							"description": "A unique integer value identifying this endpoint."
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "products",
+			"schema": {
+				"attributes": [
+					{
+						"name": "business_criticality",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "* `very high` - Very High\n* `high` - High\n* `medium` - Medium\n* `low` - Low\n* `very low` - Very Low\n* `none` - None",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.OneOf(\n\"very high\",\n\"high\",\n\"medium\",\n\"low\",\n\"very low\",\n\"none\",\n\"\",\n\"\",\n)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "description",
+						"string": {
+							"computed_optional_required": "required",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.LengthBetween(1, 4000)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "disable_sla_breach_notifications",
+						"bool": {
+							"computed_optional_required": "computed_optional",
+							"description": "Disable SLA breach notifications if configured in the global settings"
+						}
+					},
+					{
+						"name": "enable_full_risk_acceptance",
+						"bool": {
+							"computed_optional_required": "computed_optional",
+							"description": "Allows full risk acceptance using a risk acceptance form, expiration date, uploaded proof, etc."
+						}
+					},
+					{
+						"name": "enable_product_tag_inheritance",
+						"bool": {
+							"computed_optional_required": "computed_optional",
+							"description": "Enables product tag inheritance. Any tags added on a product will automatically be added to all Engagements, Tests, and Findings"
+						}
+					},
+					{
+						"name": "enable_simple_risk_acceptance",
+						"bool": {
+							"computed_optional_required": "computed_optional",
+							"description": "Allows simple risk acceptance by checking/unchecking a checkbox."
+						}
+					},
+					{
+						"name": "external_audience",
+						"bool": {
+							"computed_optional_required": "computed_optional",
+							"description": "Specify if the application is used by people outside the organization."
+						}
+					},
+					{
+						"name": "internet_accessible",
+						"bool": {
+							"computed_optional_required": "computed_optional",
+							"description": "Specify if the application is accessible from the public internet."
+						}
+					},
+					{
+						"name": "lifecycle",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "* `construction` - Construction\n* `production` - Production\n* `retirement` - Retirement",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.OneOf(\n\"construction\",\n\"production\",\n\"retirement\",\n\"\",\n\"\",\n)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "name",
+						"string": {
+							"computed_optional_required": "required",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.LengthBetween(1, 255)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "origin",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "* `third party library` - Third Party Library\n* `purchased` - Purchased\n* `contractor` - Contractor Developed\n* `internal` - Internally Developed\n* `open source` - Open Source\n* `outsourced` - Outsourced",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.OneOf(\n\"third party library\",\n\"purchased\",\n\"contractor\",\n\"internal\",\n\"open source\",\n\"outsourced\",\n\"\",\n\"\",\n)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "platform",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "* `web service` - API\n* `desktop` - Desktop\n* `iot` - Internet of Things\n* `mobile` - Mobile\n* `web` - Web",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.OneOf(\n\"web service\",\n\"desktop\",\n\"iot\",\n\"mobile\",\n\"web\",\n\"\",\n\"\",\n)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "prod_numeric_grade",
+						"int64": {
+							"computed_optional_required": "computed_optional",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+											}
+										],
+										"schema_definition": "int64validator.Between(-2147483648, 2147483647)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "prod_type",
+						"int64": {
+							"computed_optional_required": "required"
+						}
+					},
+					{
+						"name": "product_manager",
+						"int64": {
+							"computed_optional_required": "computed_optional"
+						}
+					},
+					{
+						"name": "regulations",
+						"list": {
+							"computed_optional_required": "computed_optional",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "revenue",
+						"string": {
+							"computed_optional_required": "computed_optional",
+							"description": "Estimate the application's revenue.",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "regexp"
+											},
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+											}
+										],
+										"schema_definition": "stringvalidator.RegexMatches(regexp.MustCompile(\"^-?\\\\d{0,13}(?:\\\\.\\\\d{0,2})?$\"), \"\")"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "sla_configuration",
+						"int64": {
+							"computed_optional_required": "computed_optional"
+						}
+					},
+					{
+						"name": "tags",
+						"list": {
+							"computed_optional_required": "computed_optional",
+							"element_type": {
+								"string": {}
+							}
+						}
+					},
+					{
+						"name": "team_manager",
+						"int64": {
+							"computed_optional_required": "computed_optional"
+						}
+					},
+					{
+						"name": "technical_contact",
+						"int64": {
+							"computed_optional_required": "computed_optional"
+						}
+					},
+					{
+						"name": "user_records",
+						"int64": {
+							"computed_optional_required": "computed_optional",
+							"description": "Estimate the number of user records within the application.",
+							"validators": [
+								{
+									"custom": {
+										"imports": [
+											{
+												"path": "github.com/hashicorp/terraform-plugin-framework-validators/int64validator"
+											}
+										],
+										"schema_definition": "int64validator.Between(0, 2147483647)"
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "authorization_groups",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "created",
+						"string": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "findings_count",
+						"int64": {
+							"computed_optional_required": "computed"
+						}
+					},
+					{
+						"name": "findings_list",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "id",
+						"int64": {
+							"computed_optional_required": "computed",
+							"description": "A unique integer value identifying this product."
+						}
+					},
+					{
+						"name": "members",
+						"list": {
+							"computed_optional_required": "computed",
+							"element_type": {
+								"int64": {}
+							}
+						}
+					},
+					{
+						"name": "product_meta",
+						"list_nested": {
+							"computed_optional_required": "computed",
+							"nested_object": {
+								"attributes": [
+									{
+										"name": "name",
+										"string": {
+											"computed_optional_required": "computed"
+										}
+									},
+									{
+										"name": "value",
+										"string": {
+											"computed_optional_required": "computed"
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			}
+		}
+	],
+	"version": "0.1"
+}

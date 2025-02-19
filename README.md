@@ -3,6 +3,11 @@ specification.
 
 We're focusing on the OpenAPI specification of Defect Dojo, version 2.43.3.
 
+## NOTES
+
+- The OpenAPI schema contains circular references, which is not well-supported.
+  We ignore the `prefetch` attribute where necessary
+
 ## OpenAPI specification
 
 In order to track individual changes between versions, pipe this through

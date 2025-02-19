@@ -15,6 +15,9 @@ resources:
     delete:
       path: /api/v2/products/{id}/
       method: DELETE
+    schema:
+      ignores:
+        - prefetch
 
   endpoints:
     create:
@@ -29,6 +32,9 @@ resources:
     delete:
       path: /api/v2/endpoints/{id}/
       method: DELETE
+    schema:
+      ignores:
+        - prefetch
 
 data_sources:
   products:
@@ -38,8 +44,14 @@ data_sources:
     read:
       path: /api/v2/products/{id}/
       method: GET
+    schema:
+      ignores:
+        - prefetch
 
   endpoints:
     read:
       path: /api/v2/endpoints/{id}/
       method: GET
+    schema:
+      ignores:
+        - prefetch
