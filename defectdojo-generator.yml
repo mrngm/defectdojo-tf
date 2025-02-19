@@ -1,0 +1,45 @@
+provider:
+  name: "defectdojo"
+
+resources:
+  products:
+    create:
+      path: /api/v2/products/
+      method: POST
+    read:
+      path: /api/v2/products/{id}/
+      method: GET
+    update:
+      path: /api/v2/products/{id}/
+      method: PUT
+    delete:
+      path: /api/v2/products/{id}/
+      method: DELETE
+
+  endpoints:
+    create:
+      path: /api/v2/endpoints/
+      method: POST
+    read:
+      path: /api/v2/endpoints/{id}/
+      method: GET
+    update:
+      path: /api/v2/endpoints/{id}/
+      method: PUT
+    delete:
+      path: /api/v2/endpoints/{id}/
+      method: DELETE
+
+data_sources:
+  products:
+    create:
+      path: /api/v2/products/
+      method: POST
+    read:
+      path: /api/v2/products/{id}/
+      method: GET
+
+  endpoints:
+    read:
+      path: /api/v2/endpoints/{id}/
+      method: GET
