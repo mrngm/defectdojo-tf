@@ -29,3 +29,17 @@ tfplugingen-openapi generate \
   --output defectdojo-tf-provider-v2.43.3.json \
   defectdojo-v2.43.3.json
 ```
+
+## Terraform Plugin Framework
+
+Via https://github.com/hashicorp/terraform-plugin-codegen-framework/
+
+```
+go install github.com/hashicorp/terraform-plugin-codegen-framework/cmd/tfplugingen-framework@latest
+
+tfplugingen-framework generate all \
+    --input defectdojo-tf-provider-v2.43.3.json \
+    --output internal/provider
+```
+
+(see `internal/provider` for the generated files)
