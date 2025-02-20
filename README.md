@@ -1,5 +1,6 @@
-This repository describes how to generate a Terraform provider from an OpenAPI
-specification.
+This repository describes how to generate Terraform provider files from an
+OpenAPI specification, allowing for quick development of a Terraform provider.
+See also [this workflow example](https://developer.hashicorp.com/terraform/plugin/code-generation/workflow-example)
 
 We're focusing on the OpenAPI specification of Defect Dojo, version 2.43.3.
 
