@@ -41,6 +41,28 @@ go install github.com/hashicorp/terraform-plugin-codegen-framework/cmd/tfpluging
 tfplugingen-framework generate all \
     --input defectdojo-tf-provider-v2.43.3.json \
     --output internal/provider
+
+mkdir -p client/{resources,datasources}
+
+tfplugingen-framework scaffold resource \
+    --name products \
+    --output-dir client/resources/ \
+    --package resources
+
+tfplugingen-framework scaffold resource \
+    --name endpoints \
+    --output-dir client/resources/ \
+    --package resources
+
+tfplugingen-framework scaffold data-source \
+    --name products \
+    --output-dir client/datasources/ \
+    --package datasources
+
+tfplugingen-framework scaffold data-source \
+    --name endpoints \
+    --output-dir client/datasources/ \
+    --package datasources
 ```
 
 (see `internal/provider` for the generated files)
